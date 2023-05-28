@@ -1,0 +1,109 @@
+<div class="login-content ">
+
+    <div class="card-content position-absolute top-50 start-50 translate-middle">
+        
+        <div class="card" >
+            <div class="img-content">
+                <img src="./assets/image/Logo_Toque.svg" class="card-img-top" alt="logo">
+            </div>
+            <div class="loading" *ngIf="loading">
+                <img src="./assets/image/loading.gif" alt="loading">
+            </div>
+            <div class="card-body" *ngIf="!loading">
+                <form [formGroup]="formGroup">
+                    <div class="row">
+
+                            <mat-form-field appearance="standard">
+                                <mat-label id="email" floatLabel="never">Correo electrónico</mat-label>
+                                <input matInput type="email" formControlName="username" name="username" 
+                                    placeholder="correo@gmail.com">
+                                <mat-icon matSuffix>email</mat-icon>
+                                <mat-hint>No comparta sus credenciales con nadie</mat-hint>
+                                <mat-error *ngIf="username?.hasError('required')">
+                                    El usuario es requerido.
+                                  </mat-error>
+                                  <mat-error *ngIf="username?.hasError('pattern')">
+                                    <strong>El usuario es un email</strong>
+                                  </mat-error>
+                              </mat-form-field>
+      
+                    </div>
+
+                    <div class="row" >
+                  
+
+                            <mat-form-field appearance="standard">
+                                <mat-label id="password" floatLabel="never">Contraseña</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
+                                    name="password" placeholder="Ingrese su contraseña">
+                                <mat-icon matSuffix (click)="hide = !hide"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="password?.hasError('required')">
+                                    La contraseña es requerida.
+                                  </mat-error>
+                              </mat-form-field>
+
+                  
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="register-custom text-muted">
+                        <span>
+                            <a (click)="openModal()">
+                                Olvidé mi contraseña
+                            </a>
+                        </span>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn enter-btn" type="submit"
+                            (click)="logIn()">Ingresar</button>
+                    </div>
+                </div>
+               
+            </div>
+
+        </div>
+        <div *ngIf="loginErrorMsg" class="alert alert-danger text-center alert-custom" role="alert">
+            El correo o la contraseña son incorrectas
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="modal" class="modal" tabindex="-1" style="display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center" style="width: 100%;">
+                <h5 class="modal-title">Reestablece tu contraseña</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body moda-body-forgetPassword">
+                <form [formGroup]="resetPasswrodForm">
+                    <div class="row row-custom">
+                        
+                            <mat-form-field appearance="standard">
+                                <mat-label>Ingrese su correo electrónico</mat-label>
+                                <input matInput type="email" placeholder="Ej. tucorreo@gmail.com" formControlName="email">
+                                <mat-icon matSuffix>email</mat-icon>
+                                <mat-hint>No comparta sus credenciales con nadie</mat-hint>
+                                <mat-error *ngIf="email?.hasError('required')">
+                                    El email es requerido.
+                                  </mat-error>
+                                  <mat-error *ngIf="email?.hasError('pattern')">
+                                    <strong>El usuario es un email</strong>
+                                  </mat-error>
+                              </mat-form-field>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel-custom buttonColorCancel" data-bs-dismiss="modal"
+                    (click)="closeModal()">Cancelar</button>
+                <button type="button" class="btn btn-save-custom"
+                    (click)="sendEmail()">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>

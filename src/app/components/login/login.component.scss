@@ -1,0 +1,132 @@
+.login-content {
+
+  .card-content {
+    width: 20rem;
+    box-shadow: none;
+    background-color: #EAEEF1;
+
+    .card {
+      border: none;
+      background-color: #EAEEF1;
+
+      .img-content {
+        width: 100%;
+        text-align: center;
+        padding: 25px 0;
+        img {
+          width: 114pt; 
+        }
+        h2 {
+          font-size: 24pt;
+          
+          font-weight: bold;
+        }
+        span {
+          font-size: 12pt;
+
+        }
+      }
+      
+
+      .card-body {
+        .row {
+          padding: 2%;
+
+          .label-padding {
+            padding: 5px 0;
+          }
+
+          .no-share {
+            font-size: 12px;
+          }
+        }
+
+        form {
+          .input-content {
+            display: flex;
+
+            input {
+              background: white;
+              width: 270px;
+              border: 1px solid #E0E0E0;
+              padding: 5px;
+            }
+          }
+
+          
+
+          .alert-custom {
+            margin-top: 6%;
+            padding: 0.5rem 0.5rem !important;
+            font-size: small;
+          }
+        }
+
+        
+      }
+    }
+  }
+
+  .alert-custom {
+    font-size: small;
+    background: #ee4b56;
+  }
+}
+
+.enter-btn{
+  background: #30373D;
+  color: white;
+  width: 100%;
+}
+
+.register-custom {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+
+  a {
+    color: #30373D;
+    text-decoration: none;
+  }
+}
+
+
+.modal {
+  margin-top: 30vh;
+
+  .alert-custom {
+    font-size: small;
+    background: #ee4b56;
+    width: 70%;
+    padding: 0.5rem 0.5rem !important;
+  }
+
+  .moda-body-forgetPassword {
+    height:10rem;  
+    
+    .row-custom {
+      display: inline
+    }
+
+    .alert-custom {
+      width: 80%;
+      display: inline-block;
+    }
+  }
+
+  .btn-cancel-custom {
+    color: #ee4b56;
+    border: 1px solid #ee4b56;
+  }
+
+  .btn-save-custom{
+    color: white;
+    background-color: #F08302;
+  }
+}
+
+#email, #password {
+  color: #212529;
+  font-weight: bold;
+  font-size: 16pt;
+}

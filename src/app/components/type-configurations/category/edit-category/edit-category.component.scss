@@ -1,0 +1,36 @@
+.example-card {
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    
+    mat-card-header {
+        margin-top: 60px;
+      }
+
+    .input-field {
+        width: 100%;
+    }
+}
+
+.btn-action {
+    display: flex;
+    justify-content: flex-end;
+
+    .btn-accept {
+        background-color: #f08302;
+        color: white;
+        margin: 2px;
+    }
+
+    .btn-cancel {
+        color: #ee4b56;
+        border: 2px solid #ee4b56;
+        margin: 2px;
+    }
+}
+
+.secondary{
+    width: auto;
+    margin-top: 10px;
+    margin-left: 10px;
+}

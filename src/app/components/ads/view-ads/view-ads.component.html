@@ -1,0 +1,114 @@
+
+<mat-card class="example-card">
+  <mat-card-header>
+
+    <div class="mat-card-title">
+      <div class="header-content">
+        <div style="display: flex; justify-content: space-between; font-size: small; margin-bottom: 7px;">
+          <span class="text-muted">Vista de</span>
+          <span [routerLink]="['/home']" style="cursor: pointer; color: #F08302;">Back home x</span>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h1>Publicidades</h1>
+          </div>
+          <div class="col-12">
+            <button class="btn" style="border:1px solid black;" [routerLink]="['/ads/add']">Agregar nuevo</button>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="search-content">
+      <div class="row g-3">
+        <div class="col-auto centered">
+          <input type="text" [(ngModel)]="searchInput" name="search" class="form-control" id="search-input"
+            placeholder="Buscar en tabla" autocomplete="off">
+        </div>
+        <div class="col-auto centered">
+          <button type="submit" (click)="searchFilter()" class="btn btn-search mb-3 buttonColor">Buscar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+
+      <table mat-table [dataSource]="dataSource" class="">
+
+
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> # </th>
+          <td mat-cell *matCellDef="let element; let i = index">{{i+1}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef> Imagen </th>
+          <td mat-cell *matCellDef="let element"> <img [src]="element.image" [alt]="element.name" width="50" height="50"> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Estado </th>
+          <td mat-cell *matCellDef="let element" class="btn-actions">
+            <button *ngIf='element.available' class="mat-icon-button btn-delete" (click)="changestatus(element)">
+              <mat-icon>close</mat-icon>
+            </button>
+            <button *ngIf='!element.available' class="mat-icon-button btn-aprove" (click)="changestatus(element)">
+              <mat-icon class="primaryColor">check_circle</mat-icon>
+            </button>
+            
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element" class="btn-actions">
+            <button class="mat-icon-button" (click)="info(element)">
+              <mat-icon>track_changes</mat-icon>
+            </button>
+            <button class="mat-icon-button" (click)="editAds(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="mat-icon-button btn-delete" (click)="deleteAds(element)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="loading">
+          <td mat-footer-cell class="loading" *matFooterCellDef colspan="6">
+            <span>Cargando...</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="noData">
+          <td mat-footer-cell class="noData" *matFooterCellDef colspan="6">
+            <span>No existen datos</span>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr mat-footer-row *matFooterRowDef="['loading']" [hidden]="loadingMsg == false">
+        <tr mat-footer-row *matFooterRowDef="['noData']" [hidden]="noDataSourceMsg == false">
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[10, 20]" ></mat-paginator>
+
+    </div>
+
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,65 @@
+.example-card {
+  box-shadow: none;
+  background: none;
+  margin-top: 50px;
+  .search-content {
+    .column-custom {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        color: #F08302;
+        border: 2px solid #F08302;
+      }
+    }
+  }
+
+  .mat-card-title {
+    width: 100% !important;
+
+    .header-content {
+      padding: 4%;
+      width: 100%;
+    }
+  }
+
+  .loading {
+    width: 100%;
+    text-align: center;
+
+    span {
+      font-size: larger;
+      font-weight: bolder;
+    }
+  }
+
+  .noData {
+    width: 100%;
+    text-align: center;
+
+    span {
+      font-size: larger;
+      font-weight: bolder;
+    }
+  }
+
+  table {
+    width: 100%;
+    box-shadow: none;
+    background: none;
+  }
+}
+
+.btn-add {
+  border: 2px solid black;
+}
+
+@media (min-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  .mat-card-header {
+    display: contents !important;
+  }
+
+  .column-custom {
+    justify-content: center !important;
+  }
+}

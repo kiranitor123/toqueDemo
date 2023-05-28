@@ -1,0 +1,45 @@
+.example-card {
+  width: 100%;
+  box-shadow: none;
+  background: none;
+  margin-top: 50px;
+  form {
+    .row {
+      margin-bottom: 2%;
+
+      .field-custom {
+        width: 100%;
+      }
+
+      mat-form-field {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+
+
+.btn-action {
+  display: flex;
+  justify-content: flex-end;
+
+  .btn-accept {
+      background-color: #f08302;
+      color: white;
+      margin: 2px;
+  }
+
+  .btn-cancel {
+      color: #ee4b56;
+      border: 2px solid #ee4b56;
+      margin: 2px;
+  }
+}
+
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}

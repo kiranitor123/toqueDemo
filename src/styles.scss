@@ -1,0 +1,116 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+*:not(mat-hint){
+  font-family: 'Helvetica Neue';
+  /* Add !important to overwrite all elements */
+}
+
+
+
+td {
+  font-family: ligth;
+}
+
+th {
+  font-size: 15px !important;
+  font-family: bold !important;
+}
+
+h1 {
+  font-family: face;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  min-height: 100vh;
+  background: #eaeef1;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.loading {
+  width: 100%;
+
+  img {
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: fixed;
+    z-index: 999;
+    width: 6rem;
+  }
+}
+
+/*fixes*/
+.primaryColor {
+  color: #f08302;
+}
+
+.borderFix{
+  border: 2px solid #f08302;
+}
+
+.buttonColor {
+  color: #f08302 !important;
+  border-color: #f08302 !important;
+}
+
+.buttonColorCancel {
+  color: #ee4b56 !important;
+  border-color: #ee4b56 !important;  
+}
+
+.saveButtonFix {
+  height: 52px;
+  margin-bottom: -37px !important;
+  width: 78px !important;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.w80 {
+  width: 60vw;
+  margin-right: 20vw;
+}
+
+@media only screen and (max-width: 500px) {
+  .hide500 {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 501px) {
+  .hideOver500 {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+/*toolbar especial*/
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f08302;
+}
+
+.scrollable{
+  overflow: auto;
+}

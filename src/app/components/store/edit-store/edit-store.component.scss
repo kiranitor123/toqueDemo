@@ -1,0 +1,42 @@
+.example-card {
+  box-shadow: none;
+  background: none;
+  
+  mat-card-header {
+    margin-top: 60px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .form-label{
+      color: #757575;
+      font-weight: 300;
+  }
+  
+  .btn-save-store {
+    background-color: #F08302;
+    color: white;
+    border: 2px solid #F08302;
+  }
+  
+  .btn-delete-store {
+    color: #ee4b56;
+    border: 2px solid #ee4b56;
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+mat-icon {
+  cursor: pointer;
+}

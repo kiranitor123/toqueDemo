@@ -1,0 +1,41 @@
+.example-card {
+  width: 100%;
+  box-shadow: none;
+  background: none;
+  margin-top: 50px;
+  form {
+    .row {
+      margin-bottom: 2%;
+
+      .field-custom {
+        width: 100%;
+      }
+
+      mat-form-field {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+
+.btn-action {
+  display: flex;
+  justify-content: flex-end;
+
+  .send-notification-btn {
+    background-color: #F08302;
+    color: white;
+    border: 2px solid #F08302;
+    margin-right: 2px;
+  }
+
+  .cancel-notification-btn {
+    color: #ee4b56;
+    border: 2px solid #ee4b56;
+    margin-left: 2px;
+  }
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: black!important;
+}

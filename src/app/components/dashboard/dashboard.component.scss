@@ -1,0 +1,213 @@
+.menu-header {
+  display: flex;
+  margin-left: 1.5%;
+  width: 100%;
+  justify-content: space-around;
+
+  span {
+    font-size: smaller;
+    font-weight: normal;
+  }
+}
+
+.noticustom {
+  display: flex;
+  align-items: center;
+}
+
+.menu-header-responsive {
+  display: none;
+}
+
+.router-link-active {
+  color: #F08302;
+}
+
+mat-sidenav {
+  .exit-menu-custom {
+    position: relative;
+    bottom: 0;
+  }
+
+  button:hover {
+    color: #ee4b56;
+  }
+}
+
+%btn-menu {
+  background: #f5f5f5;
+  border: none;
+  align-self: center;
+}
+
+.notifications {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+.example-app-name {
+  img {
+    width: 140px;
+    margin: 0px 0px 80px 0px;
+  }
+}
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+
+  .section {
+    padding-left: 7%;
+    font-size: larger;
+    font-weight: 600;
+    padding-top: 3%;
+  }
+}
+
+mat-sidenav-content {
+  background: #f5f5f5;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+.mat-sidenav {
+  width: 17rem;
+}
+
+.icon {
+  margin-right: 4%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.btn-menu {
+  @extend %btn-menu;
+}
+
+.btn-rigth-button {
+  @extend %btn-menu;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  background: black;
+  .footer {
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    padding: 1%;
+  }
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+mat-tree-node {
+  li:hover {
+    a:hover {
+      color: #F08302;
+    }
+  }
+}
+
+.toolbar-content {
+  background-color: #fafbfc;
+}
+
+.pages-content {
+  background-color: #fafbfc;
+  width: 93%;
+  /*   min-height: 100%; */
+  margin: 0 2% 2% 2%;
+}
+
+//320 - 736
+@media (min-width: 320px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 2) {
+  .example-app-name {
+    img {
+      width: 180px;
+      margin:0;
+    }
+  }
+
+  .menu-header {
+    display: none;
+  }
+
+  .registros-btn {
+    display: none;
+  }
+
+  .menu-header-responsive {
+    display: inline;
+
+    .custom-line {
+      padding: 3px;
+    }
+
+    .btn-rigth-button {
+      background: none;
+      border: none;
+      align-self: center;
+      color: black;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 400px) {
+  /* smartphones, Android phones, landscape iPhone */
+  .pages-content {
+    background-color: #fafbfc;
+    width: 93%;
+    /*   min-height: 100%; */
+  }
+  
+}
+
+/*fixes*/
+
+
+@media (max-width: 500px) {
+  /* smartphones, Android phones, landscape iPhone */
+  .notifications {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+}

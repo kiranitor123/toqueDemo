@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Información</h2>
+<mat-dialog-content class="mat-typography">
+
+    <div *ngIf="data" class="row">
+      <div class="col-12">
+        <h3>Negocio : {{data.name}} </h3>
+      </div>
+      <div  class="col-12">
+        Banco : {{infoAccount.banckName}}
+      </div>
+      <div  class="col-12">
+        Cuenta : {{infoAccount.banckAccount}}
+      </div>
+      <div  class="col-12">
+        Dueño : {{infoAccount.onwerAccountName}}
+      </div>
+
+      <div  class="col-12">
+        CI : {{infoAccount.ciAccount}}
+      </div>
+
+      <div  class="col-12">
+        Moneda : {{infoAccount.kindAccount}}
+      </div>
+
+    </div>
+</mat-dialog-content>

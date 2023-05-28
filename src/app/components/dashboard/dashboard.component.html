@@ -1,0 +1,94 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+    <mat-sidenav-container class="example-sidenav-container">
+        <mat-sidenav #snav [mode]="'over'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="0">
+            <div class="example-app-name">
+                <img src="assets/image/Logo_Toque.svg" alt="">
+            </div>
+            <div class="p-3">
+                <div class="menu-header-responsive">
+                    <div class="custom-line">
+                        <span>{{(this.user|async)?.username | titlecase }}</span>
+                    </div>
+                    <div class="notifications custom-line">
+                        <span>Notificaciones</span>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <section class="section text-monospace">MENÚ</section>
+
+            <mat-nav-list>
+                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+
+                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle class="mat-tree-node-content">
+                        <li class="mat-tree-node custom-li">
+                            <a class="menu" mat-list-item [routerLink]="node.route"
+                                routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">
+                                <mat-icon class="icon">{{node.icon}}</mat-icon>{{node.name}}
+                            </a>
+                        </li>
+                    </mat-tree-node>
+
+                    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                        <li>
+                            <div class="mat-tree-node">
+                                <a mat-list-item class="submenu" [routerLink]="node.route" matTreeNodeToggle
+                                    [attr.aria-label]="'Toggle ' + node.name">
+                                    <mat-icon class="icon"> {{node.icon}}</mat-icon>{{node.name}}
+                                </a>
+                                <mat-icon class="mat-icon-rtl-mirror">
+                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                </mat-icon>
+                            </div>
+                            <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+                                <ng-container matTreeNodeOutlet></ng-container>
+                            </ul>
+                        </li>
+                    </mat-nested-tree-node>
+                </mat-tree>
+                <div class="mt-1">
+                    <mat-divider></mat-divider>
+
+                    <mat-action-list class="exit-menu-custom">
+                        <button mat-list-item (click)="logout()">
+                            <mat-icon class="icon">logout</mat-icon>Salir
+                        </button>
+                    </mat-action-list>
+                </div>
+            </mat-nav-list>
+
+
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <div class="toolbar-content">
+                <mat-toolbar class="example-toolbar">
+                    <button class="btn-menu" mat-icon-button (click)="snav.toggle()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+
+                    <div class="menu-header">
+                        <div class="hide500">
+                            <span><strong>TOQUE</strong></span>
+                        </div>
+                        <div class="hide500">
+                            <span>{{(this.user|async)?.username  | titlecase }}</span>
+                        </div>
+
+                        <div class="notifications" (click)="openNotifications()">
+                            <mat-icon  class="icon hide500">notifications</mat-icon>
+                                <span [matBadge]="sugest.length" matBadgeColor="warn" class="hide500">Notificaciones</span>
+                                
+                            <mat-icon [matBadge]="sugest.length" matBadgeColor="warn" class="icon hideOver500 alignRight">notifications</mat-icon>
+                        </div>
+                    </div>
+                </mat-toolbar>
+            </div>
+            <div class="pages-content">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

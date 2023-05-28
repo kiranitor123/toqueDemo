@@ -1,0 +1,185 @@
+.example-card {
+  box-shadow: none;
+  background: none;
+  
+  mat-card-header {
+    margin-top: 60px;
+  }
+
+  #map {
+    width: 100%;
+    height: 300px;
+    margin: 5px;
+  }
+
+  .img-logo {
+    height: 100px;
+    width: 100px;
+  }
+
+  .example-full-width {
+    width: 100%;
+    margin: 0px;
+  }
+
+  .import-content {
+    display: flex;
+    margin-bottom: 3%;
+
+    .btn-import-excel {
+      border: 1px solid blue;
+      color: blue;
+      margin-left: 5%;
+    }
+  }
+
+  .selectDays-content {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+
+    .selectDays-btn {
+      margin: 12px;
+      border: 1px solid black;
+    }
+
+    .example-section {
+      margin: 20px 0;
+    }
+
+    .example-margin {
+      margin: 0 12px;
+    }
+
+    @media only screen and (max-width: 760px) {
+      .selectDays-btn {
+        margin: 2px;
+        border: 1px solid black;
+      }
+    }
+  }
+
+  .add-atention-btn {
+    background-color: #f08302;
+    color: white;
+  }
+
+  .atention-table-content {
+    margin-top: 5%;
+    table {
+      box-shadow: none;
+      width: 50%;
+    }
+  }
+
+  .colorBtn {
+    background: black;
+    color: white;
+  }
+  .uploadFile-custom {
+    width: 100%;
+    text-align: center;
+  }
+
+  .fixButton {
+    height: 51px;
+    margin-top: -17px;
+  }
+
+  .height250 {
+    height: 100px;
+  }
+
+  .aligner {
+    line-height: 100px; /* same as height! */
+  }
+
+  .borders {
+    border: 2px solid #dcdcdd;
+    border-radius: 5px;
+  }
+
+  .col-padding {
+    padding-left: 5rem;
+  }
+
+  .alert-custom {
+    font-size: small;
+    margin: 1px;
+    padding: 0.5rem;
+  }
+
+  .add-product-btn {
+    border: 2px solid #f08302;
+    color: #f08302;
+  }
+
+  .product-table-content {
+    table {
+      box-shadow: none;
+      width: 100%;
+    }
+  }
+
+  .save-supplier-btn {
+    background-color: #f08302;
+    color: white;
+    border: 2px solid #f08302;
+    margin-right: 2px;
+  }
+
+  .cancel-supplier-btn {
+    color: #ee4b56;
+    border: 2px solid #ee4b56;
+    margin-left: 2px;
+  }
+
+  @media only screen and (max-width: 575px) {
+    .height250 {
+      height: 250px;
+      text-align: center;
+    }
+
+    .aligner {
+      line-height: 40px; /* same as height! */
+    }
+
+    .img-logo {
+      height: 250px;
+      width: 250px;
+    }
+
+    .hidden{
+      visibility: hidden;
+      display: none;
+    }
+  }
+  @media only screen and (min-width: 575px) {
+    .hiddenInv{
+      visibility: hidden;
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  
+  .atention-table-content {
+    table {
+      width: 100% !important;
+    }
+  }
+
+  .product-table-content {
+    table {
+      width: 100% !important;
+    }
+    .aligner {
+      line-height: 40px; /* same as height! */
+    }
+  }
+}
+
+.botMargin{
+  margin-bottom: 10px;
+}

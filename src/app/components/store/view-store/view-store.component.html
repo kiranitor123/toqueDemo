@@ -1,0 +1,223 @@
+<mat-card class="example-card">
+  <mat-card-header>
+
+    <div class="mat-card-title">
+      <div class="header-content">
+        <div style="display: flex; justify-content: space-between; font-size: small; margin-bottom: 7px;">
+          <span class="text-muted">Vista de:</span>
+          <span [routerLink]="['/home']" style="cursor: pointer; color: #F08302;">Back home x</span>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h1>Restaurantes</h1>
+          </div>
+          <div class="col-12">
+            <button class="btn" style="border:1px solid black;" [routerLink]="['/dashboard/store/add']">Agregar nuevo</button>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="search-content">
+      <div class="row g-3">
+        <div class="col-9 col-lg-4 centered">
+          <input type="text" [(ngModel)]="searchInput" name="search" class="form-control" id="search-input"
+            placeholder="Buscar en tabla" autocomplete="off">
+        </div>
+        <div class="col-3 col-lg-2 centered">
+          <button type="submit" (click)="searchFilter()" class="btn btn-search mb-3 buttonColor">
+            Buscar
+          </button>
+        </div>
+
+        <div class="col-9 col-lg-4">
+          <mat-form-field appearance="outline" class="w100">
+            <mat-label>Propiedades</mat-label>
+            <mat-select #mySelect [(ngModel)]="myselection" (selectionChange)="selectOption(mySelect.value)" multiple>
+              <mat-option [value]="0">Todo</mat-option>
+              <mat-option *ngFor='let option of config'  [value]="option.value" [disabled]='!option.activate' >{{option.name}}</mat-option>
+             </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-3 col-lg-2">
+          <button (click)="save()" class="btn btn-search mb-3 buttonColor saveButtonFix">
+            <mat-icon>save</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+   <!--    <div *ngIf="!loadingMsg" class="loading">
+        <img src="assets/image/loading.gif" alt="">
+      </div> -->
+      <!-- <div class="mat-elevation-z8"> -->
+      <table mat-table [dataSource]="dataSource" class="">
+
+
+        <ng-container matColumnDef="position">
+          <th class="th-initial" mat-header-cell *matHeaderCellDef> # </th>
+          <td class="td-initial" mat-cell *matCellDef="let element; let i = index">{{i+1}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="storeName">
+          <th mat-header-cell *matHeaderCellDef> Restaurante </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef> Encargado </th>
+          <td mat-cell *matCellDef="let element"> {{element.owner?.username}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rol">
+          <th mat-header-cell *matHeaderCellDef> Acro </th>
+          <td mat-cell *matCellDef="let element"> {{element.acronym}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ci">
+          <th mat-header-cell *matHeaderCellDef> NIT/CI </th>
+          <td mat-cell *matCellDef="let element"> {{element.nit}} </td>
+        </ng-container>
+
+       <!--  <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef> Contacto </th>
+          <td mat-cell *matCellDef="let element"> {{element.nit}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="supplier">
+          <th mat-header-cell *matHeaderCellDef> Nº Proveedores </th>
+          <td mat-cell *matCellDef="let element"> {{element.suppliers?.length}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="branchStore">
+          <th mat-header-cell *matHeaderCellDef> Sucursales </th>
+          <td mat-cell *matCellDef="let element">
+            <button class="mat-icon-button" data-bs-target="#exampleModal" (click)="showBranchStores(element)">
+              <mat-icon>share</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th class="th-initial" mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td class="td-initial" mat-cell *matCellDef="let element" class="btn-actions">
+            <button class="mat-icon-button" (click)="info(element)">
+              <mat-icon>track_changes</mat-icon>
+            </button>
+            <button *ngIf='element.available' class="mat-icon-button btn-delete" (click)="changestatus(element)">
+              <mat-icon>close</mat-icon>
+            </button>
+            <button *ngIf='!element.available' class="mat-icon-button btn-aprove" (click)="changestatus(element)">
+              <mat-icon class="primaryColor">check_circle</mat-icon>
+            </button>
+            <button class="mat-icon-button" (click)="infoBusiness(element)">
+              <mat-icon>info</mat-icon>
+            </button>
+            <button class="mat-icon-button" (click)="editStore(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="mat-icon-button btn-delete" (click)="deleteStore(element)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="loading">
+          <td mat-footer-cell class="loading" *matFooterCellDef colspan="6">
+            <span>Cargando...</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="noData">
+          <td mat-footer-cell class="noData" *matFooterCellDef colspan="6">
+            <span>No existen datos</span>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr mat-footer-row *matFooterRowDef="['loading']" [hidden]="!loadingMsg">
+        <tr mat-footer-row *matFooterRowDef="['noData']" [hidden]="noDataSourceMsg">
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[20]" ></mat-paginator>
+
+    </div>
+
+  </mat-card-content>
+</mat-card>
+
+
+<div *ngIf="storeService.getModal()" class="modal custom-modal" id="exampleModal" tabindex="-1" style="display: block;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title text-center tittle-custom">Sucursales</h5>
+        <button type="button" (click)="closeModal()" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <agm-map  [zoom]="zoom" [latitude]="position.lat" [longitude]="position.lng">
+          <agm-marker *ngFor="let branch of listBranchStores" [latitude]="branch.geolocation.lat" [longitude]="branch.geolocation.lng"></agm-marker>
+        </agm-map>
+
+        <table mat-table [dataSource]="dataStoresSource" class="mat-elevation-z8 custom-table mt-3">
+
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="branchStoreName">
+            <th mat-header-cell *matHeaderCellDef> Sucural </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+         <!--  <ng-container matColumnDef="incharge">
+            <th mat-header-cell *matHeaderCellDef> Nombre Encargado </th>
+            <td mat-cell *matCellDef="let element"> {{element.incharge}} </td>
+          </ng-container> -->
+
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Dirección </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+          </ng-container>
+
+      <!--     <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+          </ng-container> -->
+
+          <ng-container matColumnDef="noData">
+            <td mat-footer-cell class="noData" *matFooterCellDef colspan="6">
+              <span>No tiene sucursales</span>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedStoresColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedStoresColumns;"></tr>
+          <tr mat-footer-row *matFooterRowDef="['noData']" [hidden]="listBranchStores.length != 0"></tr>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="closeModal()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
